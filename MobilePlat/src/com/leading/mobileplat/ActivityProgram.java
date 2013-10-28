@@ -48,7 +48,10 @@ public class ActivityProgram extends ActivityTemplat {
 		btmBar=(BottomBar)this.findViewById(R.id.homeBottomBar);
 		InitBottomListener();
 		LayoutArea=(RelativeLayout)this.findViewById(R.id.Main_Content);
-		initPage(new WidgetMsg(ActivityProgram.this,null),btmBar.tv_Msg);
+		if(MainApplication.IfConfigureEntity())
+			initPage(new WidgetMsg(ActivityProgram.this,null),btmBar.tv_Msg);
+		else //安装卸载程序后 application被清空...
+			initPage(new WidgetAppMger(ActivityProgram.this, null),btmBar.tv_AppMger);
 	}
 	
 	@Override

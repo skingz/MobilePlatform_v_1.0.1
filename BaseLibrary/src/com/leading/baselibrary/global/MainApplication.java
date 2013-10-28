@@ -39,6 +39,7 @@ public class MainApplication extends Application {
 		// TODO Auto-generated method stub
 		super.onLowMemory();
 	}
+	public static boolean IfConfigureEntity(){return (config!=null);}
 	
 	public static ConfigureEntity getConfig(){
 		if(config==null)
