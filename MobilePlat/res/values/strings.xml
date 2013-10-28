@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">移动办公平台</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_business">BusinessActivity</string>
+    <string name="title_activity_program">ProgramActivity</string>
+    <string name="title_activity_app_mger">AppMgerActivity</string>
+    <string name="selePicTitle">拍照</string>
+    <string name="login_tbl">登  录</string>
+    <string name="login_txt_username">账号:</string>
+    <string name="login_txt_password">密码:</string>
+    <string name="login_txt_serverAddress">服务器地址:</string>
+    <string name="login_btn">登	录</string>
+    <string name="login_chk_AutoLogin">自动登录</string>
+    <string name="login_tbl">登  录</string>
+    <string name="login_chk_RemenberPassword">记住密码</string>
+    <string name="action_exit_all">退出</string>
+    <string name="title_activity_activity_message_detail">ActivityMessageDetail</string>
+    <string name="title_activity_activity_about">ActivityAbout</string>
+
+</resources>

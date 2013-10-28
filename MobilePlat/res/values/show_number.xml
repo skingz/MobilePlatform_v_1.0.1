@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="show_num">
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+    </string-array>
+    <string-array name="show_day">
+        <item>3 天内</item>
+        <item>7 天内</item>
+        <item>15 天内</item>
+        <item>60 天内</item>
+        <item>无限制</item>
+    </string-array>
+</resources>

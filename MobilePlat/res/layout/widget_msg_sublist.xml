@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/msg_child_row"
+    android:orientation="horizontal" >
+    
+     <TextView
+        android:id="@+id/txtViewMsgTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="16sp" 
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtViewMsgSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewMsgTitle" android:gravity=""
+        android:text="" android:textColor="#FF888000"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txtViewMsgTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/imgMsgTurnTo"
+        android:text=""
+        android:textColor="#FF555555"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/imgMsgTurnTo"
+        android:contentDescription=""
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/arrow_right" />
+
+</RelativeLayout>

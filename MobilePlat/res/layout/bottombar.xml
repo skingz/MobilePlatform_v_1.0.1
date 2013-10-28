@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="50dip"
+    android:background="@drawable/title_bg" >
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:gravity="center_horizontal" >
+     <TextView
+           android:id="@+id/imgSelectedbg"
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_weight="1"
+           android:clickable="true"
+           android:background="@drawable/bottom_selected"
+           android:gravity="center_horizontal"/>
+      <TextView 
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_weight="1"/>
+       <TextView 
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_weight="1"/>
+        <TextView 
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_weight="1"/>
+     </LinearLayout>
+     
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:gravity="center_horizontal" >
+
+       <TextView
+           android:id="@+id/imgBtnMsg"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:clickable="true"
+           android:drawableTop="@drawable/icon_msg"
+           android:gravity="center_horizontal"
+           android:tag="新消息"
+           android:text="新消息"
+           android:textColor="#FFFFFF" />
+
+ <TextView
+     android:id="@+id/imgBtnHome"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_weight="1"
+     android:clickable="true"
+     android:drawableTop="@drawable/icon_home"
+     android:gravity="center_horizontal"
+     android:text="办公系统"
+     android:textColor="#FFFFFF" />
+
+ <TextView
+        android:id="@+id/imgBtnAppManger"
+        android:text="应用管理" android:textColor="#FFFFFF"
+        android:gravity="center_horizontal"
+        android:drawableTop="@drawable/icon_app_manager"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        />
+
+         <TextView
+             android:id="@+id/imgBtnSetting"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:drawableTop="@drawable/icon_settings"
+             android:gravity="center_horizontal"
+             android:text="设置"
+             android:textColor="#FFFFFF" />
+
+</LinearLayout>
+</RelativeLayout >

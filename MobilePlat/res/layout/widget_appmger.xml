@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_activity" >
+ <LinearLayout android:id="@+id/tabLinearLayout" 
+      android:layout_width="fill_parent" 
+      android:layout_height="30dip" 
+      android:background="#FFFFFF"
+      android:orientation="horizontal">"
+
+     <TextView
+         android:id="@+id/tabLocal"
+         android:layout_width="160dip"
+         android:layout_height="fill_parent"
+         android:layout_weight="1"
+         android:gravity="center"
+         android:text="本地应用" >
+
+</TextView>
+ <TextView
+         android:id="@+id/tabService"
+         android:layout_width="160dip"
+         android:layout_weight="1"
+         android:layout_height="fill_parent"
+         android:gravity="center"
+         android:text="服务应用" >
+</TextView>
+ </LinearLayout>
+   <ImageView
+       android:id="@+id/imageLine"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/tabLinearLayout"
+       android:scaleType="matrix"
+       android:src="@drawable/green_line" />
+   
+   <android.support.v4.view.ViewPager
+       android:id="@+id/vPager"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:flipInterval="30"
+       android:persistentDrawingCache="animation"
+       android:visibility="invisible"
+       android:layout_below="@+id/imageLine" >
+</android.support.v4.view.ViewPager>
+
+   <ProgressBar
+       android:id="@+id/pgBarLoding"
+       style="?android:attr/progressBarStyleLarge"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:layout_marginTop="150dip"
+       android:layout_below="@+id/tabLinearLayout"/>
+</RelativeLayout>

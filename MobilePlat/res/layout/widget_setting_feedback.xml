@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_activity"
+    android:id="@+id/activity_feedback">
+
+    <EditText
+        android:id="@+id/edt_feedback_contact"
+        android:layout_width="fill_parent"
+        android:layout_height="180dip"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/widget_kv_single"
+        android:ems="10"
+        android:gravity="top"
+        android:maxLength="1000"
+        android:hint="请输入反馈信息"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edt_feedback_massage"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/edt_feedback_contact"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/widget_kv_single"
+        android:maxLength="50"
+        android:ems="10"
+        android:hint="请输入您的联系方式QQ/手机"
+        android:inputType="textPostalAddress" />
+
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/edt_feedback_massage"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn_bg"
+        android:text="提交"
+        android:textColor="@android:color/primary_text_dark" />
+
+</RelativeLayout>

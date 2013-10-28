@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ddd"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/imgViewPluginIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/alert_dark_frame" />
+
+    <TextView
+        android:id="@+id/txtViewPluginLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imgViewPluginIcon"
+        android:text="TextViewName" />
+
+    <TextView
+        android:id="@+id/txtViewPluginVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewPluginLable"
+        android:layout_toRightOf="@+id/imgViewPluginIcon"
+        android:text="TextView"
+        android:textSize="22px" />
+
+    <ImageButton
+        android:id="@+id/imgBtnUnInstall"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_menu_delete" />
+
+</RelativeLayout>

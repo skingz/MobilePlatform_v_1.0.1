@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ActivityTemplat" >
+    <com.leading.baselibrary.ui.TitleBarLayout
+         android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dip" android:paddingRight="0dip"
+		android:paddingTop="0dip" >
+    </com.leading.baselibrary.ui.TitleBarLayout>
+
+    <RelativeLayout android:id="@+id/selfContent"
+    android:layout_width="fill_parent"
+    android:layout_below="@+id/titlebar"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+</RelativeLayout>
+
+</RelativeLayout>

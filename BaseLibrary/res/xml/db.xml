@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="Leading_App.db" version="2">
+	<table name="com.leading.baselibrary.database.bean.MsgGroup"/>
+	<table name="com.leading.baselibrary.database.bean.MsgBean"/>
+	<table name="com.leading.baselibrary.database.bean.DownloadInfo"/>
+	<table name="com.leading.baselibrary.database.bean.CacheRecord"/>
+	<table name="com.leading.baselibrary.database.bean.CacheServerAppBean"/>
+</database>

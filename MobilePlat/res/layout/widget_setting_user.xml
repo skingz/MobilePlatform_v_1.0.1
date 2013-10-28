@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_setting_user"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_activity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/setting_relative_User_Area"
+            android:layout_width="match_parent"
+            android:layout_height="65dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_marginTop="8dip"
+            android:background="@drawable/widget_kv_top" >
+
+            <ImageButton
+                android:id="@+id/show_imgbtn_head"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:layout_marginLeft="10dip"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_setting_normal" />
+
+            <TextView
+                android:id="@+id/setting_tv_UserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/show_imgbtn_head"
+                android:layout_centerVertical="true"
+                android:textSize="20.0sp"
+                android:text="TextView" />
+			<ImageView
+                android:id="@+id/setting_img_arrowhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="22dip"
+                android:src="@drawable/arrow_down" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_modif_Pwd_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_below="@id/setting_relative_User_Area"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:visibility="gone"
+            android:background="@drawable/widget_kv_bottom" >
+
+            <Button
+                android:id="@+id/setting_btn_editpassword"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/btn_bg"
+                android:text="修改密码" />
+
+            <Button
+                android:id="@+id/setting_btn_sendHeadPic"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignBaseline="@+id/setting_btn_editpassword"
+                android:layout_alignBottom="@+id/setting_btn_editpassword"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_bg"
+                android:layout_marginRight="80dp"
+                android:text="修改头像" />
+            
+        </RelativeLayout>
+
+      <RelativeLayout
+            android:id="@+id/relative_setting_password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_below="@id/setting_modif_Pwd_btn"
+            android:visibility="gone">
+        <RelativeLayout
+            android:id="@+id/relative_setting_password_old"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_below="@id/setting_modif_Pwd_btn"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:background="@drawable/widget_kv_top">
+
+            <TextView
+                android:id="@+id/textView_setting_passwordName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text="原有密码"
+                android:textColor="#ff333333"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/editText_setting_password_old"
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:textSize="12sp"
+                android:maxLength="30"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/textView_setting_passwordName"
+                android:layout_marginRight="10dip"
+                android:layout_marginLeft="10dip"
+                android:inputType="textPassword" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_setting_new_password"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_below="@id/relative_setting_password_old"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:background="@drawable/widget_kv_center" >
+
+            <TextView
+                android:id="@+id/textView_setting_new_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="17.0dip"
+                android:text="新  密 码 "
+                android:textColor="#ff333333"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/editText_setting_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_alignParentRight="true"
+                android:maxLength="30"
+                android:layout_toRightOf="@id/textView_setting_new_password"
+                android:inputType="textPassword" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_setting_affirm_password"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_below="@id/relative_setting_new_password"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:background="@drawable/widget_kv_center" >
+
+            <TextView
+                android:id="@+id/textView_setting_affirm_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingLeft="17.0dip"
+                android:text="确认密码"
+                android:textColor="#ff333333"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/editText_setting_affirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:textSize="12sp"
+                android:maxLength="30"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@id/textView_setting_affirm_password"
+                android:inputType="textPassword" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/setting_relative_btn_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_below="@id/relative_setting_affirm_password"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/widget_kv_bottom" >
+
+            <Button
+                android:id="@+id/setting_btn_canclePassword"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/btn_bg"
+                android:text="取消" />
+
+            <Button
+                android:id="@+id/setting_btn_savePassword"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_alignBaseline="@+id/setting_btn_canclePassword"
+                android:layout_alignBottom="@+id/setting_btn_canclePassword"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_bg"
+                android:layout_marginRight="80dp"
+                android:text="保存" />
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

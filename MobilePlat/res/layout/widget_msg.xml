@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF805322"
+    android:orientation="vertical">
+
+    <ExpandableListView
+        android:id="@+id/msgExpandableList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:drawSelectorOnTop="false"
+ 		android:cacheColorHint="#FFFF"
+ 		android:groupIndicator="@null"
+ 		android:fadingEdge="vertical"
+ 		android:layout_marginTop="0dip"
+  		android:dividerHeight="1.0dip">
+    </ExpandableListView>
+
+</LinearLayout>

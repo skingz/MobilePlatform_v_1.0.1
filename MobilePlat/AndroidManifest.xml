@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.leading.mobileplat"
+    android:sharedUserId="com.leading.mobileplat"
+    android:versionCode="1"
+    android:versionName="0.0.2" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- android:name 配置全局的Application可以被当前应用随时调用 -->
+    <application
+        android:name="com.leading.baselibrary.global.MainApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:process="com.leading.mobileplat"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.leading.mobileplat.ActivityLogin"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:process="com.leading.mobileplat"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.leading.mobileplat.ActivityProgram"
+            android:label="@string/title_activity_program" >
+        </activity>
+        <activity
+            android:name="com.leading.mobileplat.ui.WidgetSettingFeedback"
+            android:label="@string/title_activity_program"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name="com.leading.mobileplat.ui.WidgetSettingUser"
+            android:label="@string/title_activity_program"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name="com.leading.mobileplat.ui.SettingImgShow"
+            android:label="@string/title_activity_program"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name="com.leading.xmpp_client.ActivityDemoApp"
+            android:label="Notification Details" >
+        </activity>
+        <activity
+            android:name="com.leading.xmpp_client.NotificationDetailsActivity"
+            android:label="Notification Details" >
+        </activity>
+        <activity
+            android:name="com.leading.xmpp_client.NotificationSettingsActivity"
+            android:label="Notification Settings"
+            android:launchMode="singleTask" >
+        </activity>
+
+        <receiver android:name="com.leading.mobileplat.mutual.MessageReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="com.leading.xmpp_client.SHOW_NOTIFICATION" >
+                </action>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.leading.xmpp_client.server.NotificationService"
+            android:enabled="true"
+            android:label="NotificationService" >
+            <intent-filter>
+                <action android:name="com.leading.xmpp_client.server.NotificationService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.leading.mobileplat.ActivityMessageDetail"
+            android:label="@string/title_activity_activity_message_detail"
+            android:launchMode="singleTask" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.leading.baselibrary.ui.TemplatActivity" />
+        </activity>
+        <activity
+            android:name="com.leading.mobileplat.ActivityAbout"
+            android:label="@string/title_activity_activity_about" >
+        </activity>
+    </application>
+
+</manifest>

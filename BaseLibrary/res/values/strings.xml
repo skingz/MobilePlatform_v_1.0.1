@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BaseLiabrary</string>
+    <string name="action_exit">退出</string>
+    <string name="MainPlatAPK">com.leading.mobileplat</string>
+    <string name="MainPlatMainActivty">com.leading.mobileplat.ActivityProgram</string>
+    <string name="businessTitle">业务办理</string>
+    <string name="Menu_UpdatePro">项目信息更新</string>
+
+</resources>

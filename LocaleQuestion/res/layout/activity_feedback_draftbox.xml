@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/feedback_draftbox"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+   <com.leading.baselibrary.ui.TitleBarLayout
+        android:id="@+id/feedback_tbl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dip"
+        android:paddingRight="0dip"
+        android:paddingTop="0dip"
+        titlebar:TextView_Name="现场反馈" >
+    </com.leading.baselibrary.ui.TitleBarLayout>
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/feedback_tbl"
+        android:fadingEdge="vertical">
+       	<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+    <com.leading.localequestion.ui.QuestionMessageSubmitView
+        android:id="@+id/feedback_cgx_jbxx"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+	<TableRow android:layout_width="fill_parent" 
+	    	android:id="@+id/feedback_tr_xczp"
+	        android:layout_height="28dip"
+	        android:layout_below="@id/feedback_cgx_jbxx"
+	        android:layout_centerHorizontal="true"
+	        android:background="#4F94CD"
+	        android:layout_marginTop="15dip" 
+	        android:layout_marginLeft="8dip"
+	        android:layout_marginRight="8dip">
+	    <TextView 
+	        android:text="现场照片"
+	        android:layout_marginLeft="23dip"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:layout_weight="4"
+	        android:layout_gravity="center_vertical"/>
+    	<ImageView 
+	        android:id="@+id/feedback_xczpwjj_img"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_marginRight="20dip"
+	     	android:background="@drawable/feedback_wjj"/>
+      	<ImageView 
+	        android:id="@+id/feedback_xczpzxj_img"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="10dip"
+	        android:layout_gravity="center_vertical"
+	        android:background="@drawable/feedback_zxj"
+	        />
+    </TableRow>
+    <ListView
+	    android:id="@+id/feedback_lv_xczp"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/feedback_tr_xczp"
+	    android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:drawSelectorOnTop="false">
+	</ListView>
+	</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>

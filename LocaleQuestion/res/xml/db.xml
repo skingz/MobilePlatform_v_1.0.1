@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="Leading_App.db" version="3">
+	<table name="com.leading.localequestion.entity.LocaleQuestion"/>
+	<table name="com.leading.localequestion.entity.QsClass"/>
+	<table name="com.leading.localequestion.entity.QuestionAffix"/>
+	<table name="com.leading.localequestion.entity.SysBelong"/>
+</database>

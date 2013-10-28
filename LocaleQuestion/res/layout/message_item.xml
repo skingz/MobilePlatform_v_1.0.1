@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:minHeight="?android:attr/listPreferredItemHeight" >
+
+    <TextView
+        android:id="@+id/msg_txt_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="未读信息"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/msg_txt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg_txt_heading"
+        android:layout_marginLeft="4dip"
+        android:text="下午12：17"
+        android:textColor="#669999"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/msg_txt_subheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/msg_txt_time"
+        android:text="有十条信息未读"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/msg_btn_delete"
+        android:layout_width="40dip"
+        android:layout_height="30dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dip"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_bg_red"
+        android:visibility="gone"
+        android:text="删除" />
+
+</RelativeLayout>

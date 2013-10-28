@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:single="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/feedback_unresolved"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <com.leading.baselibrary.ui.TitleBarLayout
+        android:id="@+id/fu_tbl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="0dip"
+        android:paddingRight="0dip"
+        android:paddingTop="0dip"
+        titlebar:TextView_Name="现场反馈" >
+    </com.leading.baselibrary.ui.TitleBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fu_tbl"
+        android:fadingEdge="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/fu_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="60dip" >
+
+            <com.leading.localequestion.ui.QuestionMessageReadView
+                android:id="@+id/fu_cgx_jbxx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="3dp" />
+
+            <TableRow
+                android:id="@+id/fu_tr_xczp"
+                android:layout_width="match_parent"
+                android:layout_height="28dip"
+                android:layout_below="@id/fu_cgx_jbxx"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/widget_kv_top" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dip"
+                    android:text="附加图片说明" />
+            </TableRow>
+
+            <com.leading.baselibrary.ui.MyGridView
+                android:id="@+id/fu_lv_xczp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fu_tr_xczp"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:columnWidth="180dip"
+                android:drawSelectorOnTop="false"
+                android:gravity="center"
+                android:horizontalSpacing="10dip"
+                android:numColumns="2"
+                android:background="@drawable/widget_kv_bottom"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dip" >
+            </com.leading.baselibrary.ui.MyGridView>
+            
+     		<com.leading.baselibrary.ui.SingleLineEditView
+                android:id="@+id/fu_wtzt"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@id/fu_lv_xczp"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                 android:layout_marginTop="20dip"
+                single:widget_type="radio"
+                single:right_value="暂不解决:2,已解决:1"
+                single:backgroud_direction="top"
+                single:left_textvalue="问题状态："
+                single:right_width="200dip" />
+            <com.leading.baselibrary.ui.SingleLineEditView
+                android:id="@+id/fu_jjfa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fu_wtzt"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                single:widget_type="editLines"
+                single:backgroud_direction="buttom"
+                single:edt_line="20"
+                single:left_textvalue="解决方案："
+                single:right_width="216dip"
+                single:single_top="true" />
+            <com.leading.baselibrary.ui.SingleLineEditView
+                android:id="@+id/fu_bzsm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fu_wtzt"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:visibility="gone"
+                single:widget_type="editLines"
+                single:backgroud_direction="buttom"
+                single:edt_line="20"
+                single:left_textvalue="备注说明："
+                single:right_width="216dip"
+                single:single_top="true" />
+
+            <TableRow
+                android:id="@+id/fu_tr_fsgs"
+                android:layout_width="match_parent"
+                android:layout_height="45dip"
+                android:layout_below="@id/fu_jjfa"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/widget_kv_single"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/fu_txt_fsgs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dip"
+                    android:layout_weight="2"
+                    android:text="发生工时(人日)：" />
+
+                <EditText
+                    android:id="@+id/fu_edt_fsgs"
+                    android:layout_width="35dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="12sp"
+                    android:background="@drawable/edittext_style"
+                    android:maxLength="3" />
+
+                <CheckBox
+                    android:id="@+id/fu_ckb_sfcdgc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="18dip"
+                    android:layout_weight="4"
+                    android:button="@drawable/checkbox_style"
+                    android:text="是否彻底根除" />
+            </TableRow>
+       
+             <com.leading.baselibrary.ui.SingleLineEditView
+                android:id="@+id/fu_jjsj"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_below="@id/fu_tr_fsgs"
+                android:layout_marginLeft="8dip"
+                android:layout_marginRight="8dip"
+                android:visibility="gone"
+                single:backgroud_direction="buttom"
+                single:left_textvalue="解决时间："
+                single:right_width="216dip" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

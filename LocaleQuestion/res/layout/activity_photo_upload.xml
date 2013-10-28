@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/photo_upload"
+    android:background="#ffefebe7" >
+    
+	<ImageView 
+	    android:id="@+id/setting_img_show"
+	    android:layout_height="fill_parent" 
+	    android:layout_width="fill_parent"
+	    android:layout_above="@+id/edt_feedback_contact"/>
+	<Button
+	    android:id="@+id/setting_btn_waste"
+	    android:layout_width="58dip"
+	    android:layout_height="32dip"
+	    android:layout_alignBaseline="@+id/setting_btn_upload"
+	    android:layout_alignBottom="@+id/setting_btn_upload"
+	    android:layout_alignParentLeft="true"
+	    android:layout_marginLeft="22dp"
+	    android:background="@drawable/btn_bg"
+	    android:text="取消" />
+
+	<Button
+	    android:id="@+id/setting_btn_upload"
+	    android:layout_width="58dip"
+	    android:layout_height="32dip"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginBottom="14dp"
+	    android:layout_marginRight="28dp"
+	    android:background="@drawable/btn_bg"
+	    android:text="保存" />
+	
+	<EditText
+	    android:id="@+id/edt_feedback_contact"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:layout_above="@id/setting_btn_waste"
+	    android:background="@drawable/more_item_press"
+	    android:ems="10"
+	    android:layout_marginLeft="15dip"
+	    android:layout_marginRight="15dip"
+	    android:layout_marginBottom="12dip"
+	    android:hint="请输入描述信息"
+	    android:inputType="textMultiLine"
+	    android:maxLength="1000" />
+
+</RelativeLayout>
