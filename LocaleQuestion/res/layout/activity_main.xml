@@ -47,7 +47,7 @@
                 android:id="@+id/tv_Unread"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="有0信息未读"
+                android:text="有0条信息未读"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="14dip"/>
         </LinearLayout>
