@@ -41,6 +41,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:launchMode="singleTask"
             android:name="com.leading.mobileplat.ActivityProgram"
             android:label="@string/title_activity_program" >
         </activity>

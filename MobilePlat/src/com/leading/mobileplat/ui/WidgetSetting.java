@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.leading.baselibrary.entity.ConfigureEntity;
 import com.leading.baselibrary.global.MainApplication;
+import com.leading.baselibrary.util.ConfigureUtil;
 import com.leading.mobileplat.ActivityAbout;
 import com.leading.mobileplat.ActivityLogin;
 import com.leading.mobileplat.R;
@@ -226,6 +227,7 @@ public class WidgetSetting extends RelativeLayout implements OnClickListener{
 		ce.setUsername("");
 		ce.setPassword("");
 		MainApplication.setConfig(ce);
+		ConfigureUtil.getConfigureUtil().save(context, ce);
 		
 		ServiceManager ServerInstance=ServiceManager.getXMPPServerInstance(getContext(),null);
 		ServerInstance.stopService();

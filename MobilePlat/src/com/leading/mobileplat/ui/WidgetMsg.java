@@ -84,7 +84,12 @@ public class WidgetMsg extends LinearLayout  {
 			}
 			if(IfStartActivity){
 				DataBaseManager mgM=new DataBaseManager(context);
-				mgM.deleteMessage(mb.getMsgId());
+				if(mb.getBusinessInstanceId()==null||mb.getBusinessInstanceId().equals("")){
+					mgM.deleteMessage(mb.getMsgId());
+				}else {
+					mgM.deleteMessageByBusinessId(mb.getBusinessInstanceId());
+				}
+				
 				mgM.deleteAllReadMsgBean();
 			}
 			
