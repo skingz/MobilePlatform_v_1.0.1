@@ -79,7 +79,8 @@ public class ServiceHelper {
 		String str_Return="error";
 		try {
 			JSONObject obj = new JSONObject();
-			obj.put("Massage", massage);
+			obj.put("Message", massage);
+			obj.put("LoginName",MainApplication.getConfig().getUsername());
 			obj.put("ContactManner",contactManner); 
 			String login_Return=NetUtil.getResponseForPost(ServiceMap.PROTOCOL+MainApplication.getConfig().getServerAddress()+ServiceMap.Segment_FeedbackUri,obj.toString(), context);
 			obj=new JSONObject(login_Return);
