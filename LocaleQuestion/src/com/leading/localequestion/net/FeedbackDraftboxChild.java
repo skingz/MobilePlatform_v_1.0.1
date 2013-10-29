@@ -23,7 +23,7 @@ import com.leading.baselibrary.ui.Loading;
 import com.leading.baselibrary.ui.SingleLineEditView;
 import com.leading.baselibrary.util.SolveStyleQuestionUtil;
 import com.leading.baselibrary.util.StringUtils;
-import com.leading.localequestion.ActivityFeedbackList;
+import com.leading.localequestion.MainActivity;
 import com.leading.localequestion.R;
 import com.leading.localequestion.dao.LocaleQuestionDao;
 import com.leading.localequestion.dao.SysBelongDao;
@@ -204,9 +204,9 @@ public class FeedbackDraftboxChild {
 			Object[] o = (Object[]) msg.obj;
 			if ((Boolean) o[0] == true) {
 				activity.showToast("提交成功！");
-				Intent intent=new Intent(activity,ActivityFeedbackList.class);
-				intent.putExtra("type", ConstantStore.LQ_TYPE_DRAFT);
-				intent.putExtra("typeName", "草稿箱");
+				Intent intent=new Intent(activity,MainActivity.class);
+//				intent.putExtra("type", ConstantStore.LQ_TYPE_DRAFT);
+//				intent.putExtra("typeName", "草稿箱");
 				activity.startActivity(intent);
 				activity.finish();
 				dialog.cancel();// 关闭提示窗口
