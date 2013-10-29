@@ -106,18 +106,17 @@ public class MainActivity extends ActivityCommon implements OnClickListener{
 		TextView tv_NotToReslove=(TextView)this.findViewById(R.id.tv_NotToReslove);
 		LocaleQuestionDao ld=new LocaleQuestionDao(this);
 		try {
-
 			int tmp=ld.getDao().queryForEq("qsState", ConstantStore.LQ_TYPE_DRAFT).size();
-			if(tmp>0) tv_Draft.setText(tv_Draft.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
+			tv_Draft.setText(tv_Draft.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
 			tmp=ld.getDao().queryForEq("qsState", ConstantStore.LQ_TYPE_BESOLVED).size();
-			if(tmp>0) tv_BeReslove.setText(tv_BeReslove.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
+			tv_BeReslove.setText(tv_BeReslove.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
 			tmp=ld.getDao().queryForEq("qsState", ConstantStore.LQ_TYPE_HASBEENRESOLVED).size();
-			if(tmp>0) tv_Resloved.setText(tv_Resloved.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
+			tv_Resloved.setText(tv_Resloved.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
 			tmp=ld.getDao().queryForEq("qsState", ConstantStore.LQ_TYPE_NOTTOSOLVE).size();
-			if(tmp>0) tv_NotToReslove.setText(tv_NotToReslove.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp)));
+			tv_NotToReslove.setText(tv_NotToReslove.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp)));
 			DataBaseManager mainDatabase=new DataBaseManager(this);
 			tmp=mainDatabase.getUnReadCount(ConstantStore.LQ_NAME,LQApplication.getConfig().getUserId());
-			if(tmp>0) tv_UnRead.setText(tv_UnRead.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
+			tv_UnRead.setText(tv_UnRead.getText().toString().replaceFirst("[0-9]+",String.valueOf(tmp) ));
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
