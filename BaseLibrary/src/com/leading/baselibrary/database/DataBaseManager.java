@@ -140,6 +140,15 @@ public class DataBaseManager {
 		stateValue.put("readState", true);
 		msgBeanDAO.update(stateValue, "msgId", MsgId);
 	}
+	public void deleteMessageByBusinessId(String businessInstanceId){
+		try {
+			List<MsgBean> msgList=msgBeanDAO.getDao().queryForEq("businessInstanceId", businessInstanceId);
+			msgBeanDAO.getDao().delete(msgList);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public void deleteMessage(long msgBeanId){
 		try {
 			msgBeanDAO.getDao().deleteById(msgBeanId);
