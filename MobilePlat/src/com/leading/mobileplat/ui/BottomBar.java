@@ -19,7 +19,9 @@ public class BottomBar extends RelativeLayout {
 	private BadgeView badgeView;
 	private TextView tv_SelectView;
 
-	public TextView tv_Current=null; public Context bContext;
+	public TextView tv_Current=null;
+	public Context bContext;
+	
 	public BottomBar(Context context) {
 		super(context);
 	}
@@ -36,6 +38,9 @@ public class BottomBar extends RelativeLayout {
 	}
 	public void setCurrentIcon(TextView tv){
 		//添加滑动效果
+		if(tv_Current==null){
+			tv_Current=tv_Msg;
+		}
 		if(tv_Current!=null&&tv!=tv_Current){
 			Animation animation=new TranslateAnimation(tv_Current.getLeft(),tv.getLeft(),0,0);
 			animation.setFillAfter(true);

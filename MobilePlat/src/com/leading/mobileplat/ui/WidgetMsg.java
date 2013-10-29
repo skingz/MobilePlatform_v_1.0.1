@@ -6,7 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -85,7 +84,12 @@ public class WidgetMsg extends LinearLayout  {
 			}
 			if(IfStartActivity){
 				DataBaseManager mgM=new DataBaseManager(context);
-				mgM.deleteMessage(mb.getMsgId());
+				if(mb.getBusinessInstanceId()==null||mb.getBusinessInstanceId().equals("")){
+					mgM.deleteMessage(mb.getMsgId());
+				}else {
+					mgM.deleteMessageByBusinessId(mb.getBusinessInstanceId());
+				}
+				
 				mgM.deleteAllReadMsgBean();
 			}
 			

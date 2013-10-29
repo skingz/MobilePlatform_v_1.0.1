@@ -239,6 +239,7 @@
 		    android:layout_below="@id/relative_setting_feedback"
 		    android:layout_marginLeft="8.0dip"
 		    android:layout_marginRight="8.0dip"
+		    android:visibility="gone"
 		    android:background="@drawable/widget_kv_center" >
 
 		    <TextView

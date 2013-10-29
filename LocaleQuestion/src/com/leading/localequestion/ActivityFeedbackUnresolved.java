@@ -141,7 +141,7 @@ public class ActivityFeedbackUnresolved extends ActivityCommon {
 			try {
 				lq.setManHour(Float.valueOf(fuEdtFsgs.getText().toString()));
 			} catch (NumberFormatException e) {
-				super.showToast("请确认工时格式！");
+				super.showToast("工时格式错误！");
 				return null;
 			}
 		}
@@ -237,8 +237,7 @@ public class ActivityFeedbackUnresolved extends ActivityCommon {
 			}
 		} else {
 			titleLoad();
-			fuWtzt.setValue(String
-					.valueOf(ConstantStore.LQ_TYPE_HASBEENRESOLVED));
+			//fuWtzt.setValue(String.valueOf(ConstantStore.LQ_TYPE_HASBEENRESOLVED));
 		}
 
 	}
