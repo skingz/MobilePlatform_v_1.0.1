@@ -22,8 +22,8 @@ import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
+import com.leading.baselibrary.ui.DialogAlertUtil;
 import com.leading.baselibrary.util.FileBeanMakeUp;
 import com.leading.baselibrary.util.StringUtils;
 
@@ -136,13 +136,13 @@ public class NetUtil {
 				else
 					return "null";
 			} else{
-				Toast.makeText(NetUtil.context,"服务器异常请与技术人员联系！",Toast.LENGTH_SHORT).show();
+				DialogAlertUtil.showToast(NetUtil.context,"服务器异常请与技术人员联系！");
 			}
 		} catch (ClientProtocolException e) {
 //			e.printStackTrace();
 		} catch (IOException e) {
 //			e.printStackTrace();
-			Toast.makeText(NetUtil.context,"服务器地址解析错误！",Toast.LENGTH_SHORT).show();
+			DialogAlertUtil.showToast(NetUtil.context,"服务器地址解析错误！");
 		}
 		return null;
 	}
