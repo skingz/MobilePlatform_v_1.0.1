@@ -1,9 +1,11 @@
 package com.leading.localequestion.data;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,12 +30,13 @@ public class MessageListAdapter extends BaseAdapter{
 	private Context context;
 	private ViewHolder holder;
 	private LocaleQuestionDao lqDao;
-	private Button[] delete;
+	private Map<Integer,Button> delete;
 	public MessageListAdapter(Context context, List<Map<String, Object>> data) {
 		mData = data;
 		this.context=context;
 		mInflater = LayoutInflater.from(context);
 		lqDao=new LocaleQuestionDao(context);
+		delete=new HashMap<Integer,Button>();
 	}
 
 	@Override
@@ -53,8 +56,7 @@ public class MessageListAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-			if(position==0)
-				delete=new Button[getCount()];
+		
 		 	holder = new ViewHolder();
 		    convertView = mInflater.inflate(
 		       R.layout.message_item,null,true);
@@ -67,25 +69,28 @@ public class MessageListAdapter extends BaseAdapter{
 		    holder.txtTime.setText("["+tmpTime+"]");
 		    holder.txtSubHeading.setText(subTitle);
 		    if(getCount()>0){
-		    	delete[position]=(Button)convertView.findViewById(R.id.msg_btn_delete);	 
+		    	delete.put(position,(Button)convertView.findViewById(R.id.msg_btn_delete));	
+		    	Log.i("delete:",String.valueOf(delete.size()));
 			    convertView.setOnLongClickListener(new OnLongClickListener() {
 					@Override
 					public boolean onLongClick(View v) {
-						if(delete[position].getVisibility()==View.VISIBLE){
-							delete[position].setVisibility(View.GONE);
-							delete[position].setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in_right));
+						if(delete.get(position).getVisibility()==View.VISIBLE){
+							delete.get(position).setVisibility(View.GONE);
+							Log.i("position:",String.valueOf(position));
+							delete.get(position).setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in_right));
 						}else{
-							delete[position].setVisibility(View.VISIBLE);
-							delete[position].setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in));
+							delete.get(position).setVisibility(View.VISIBLE);
+							Log.i("position:",String.valueOf(position));
+							delete.get(position).setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in));
 						}
 						return 	false;
 					}
 				});
-			    delete[position].setOnClickListener(new OnClickListener() {
+			    delete.get(position).setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						delete[position].setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in_right));
-						delete[position].setVisibility(View.GONE);
+						delete.get(position).setAnimation(AnimationUtils.loadAnimation(context, R.anim.push_left_in_right));
+						delete.get(position).setVisibility(View.GONE);
 						LocaleQuestion lq=lqDao.query("fsiid", mData.get(position).get("fsiid"));
 						int result=lqDao.remove(lq);
 						if(result>=0){
