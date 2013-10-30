@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -19,10 +21,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.leading.baselibrary.ui.ActivityCommon;
 import com.leading.baselibrary.ui.BackgourdSwitch;
+import com.leading.baselibrary.ui.Loading;
 import com.leading.baselibrary.ui.SingleLineEditView;
 import com.leading.baselibrary.ui.TitleBarLayout;
 import com.leading.baselibrary.util.DateUtil;
@@ -55,6 +57,7 @@ public class ActivityFeedbackDraftbox extends ActivityCommon {
 	private LocaleQuestionDao lqDao;
 	private boolean isFrist = true;
 	private QuestionMessageSubmitView qmv;
+	private Loading loading;// 加载效果对象
 
 	@SuppressLint("SdCardPath")
 	@Override
@@ -372,12 +375,34 @@ public class ActivityFeedbackDraftbox extends ActivityCommon {
    	public boolean onOptionsItemSelected(MenuItem item) {
        	switch (item.getItemId()) {
        	case Menu.FIRST + 11:
-       		SysBelongDao sbd = new SysBelongDao(ActivityFeedbackDraftbox.this);
-       		sbd.UpdateProjectEnum();
-       		super.showToast("更新成功!");
+       		
+       		loading = Loading.getLoading(ActivityFeedbackDraftbox.this, R.id.feedback_draftbox);
+       		loading.openLoading();
+       		
+       		syncProThread=new Thread(){
+       	    	public void run(){
+       	    		if (!this.isInterrupted()){
+       		    		SysBelongDao sbd = new SysBelongDao(ActivityFeedbackDraftbox.this);
+       		       		sbd.UpdateProjectEnum();
+       		       		Message message = syncHandler.obtainMessage();
+       		       		syncHandler.sendMessage(message);
+       		       		this.interrupt();
+       	    		}
+       	    	}
+       	    };
+       		syncProThread.start();
        		break;
        	}
    		return false;
        }
 
+    public Thread syncProThread=null;
+    
+    public Handler syncHandler=new Handler(){
+    	public void handleMessage(Message msg) {
+    		showToast("更新成功!");
+    		loading.closeLoading();
+    		syncProThread.stop();
+    	}
+    };
 }
