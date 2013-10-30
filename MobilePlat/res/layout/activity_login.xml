@@ -141,5 +141,15 @@
 	    android:layout_alignRight="@id/login_btn"
 	    android:layout_marginRight="18dp"
 	    android:text="@string/login_chk_RemenberPassword" />
+	
+	 <ProgressBar
+       android:id="@+id/pgBarLoginLoding"
+       style="?android:attr/progressBarStyleLarge"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:layout_marginTop="50dip"
+       android:visibility="gone"
+       android:layout_below="@+id/login_chk_AutoLogin"/>
 
 </RelativeLayout>

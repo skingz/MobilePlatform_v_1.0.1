@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +16,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.leading.baselibrary.entity.ConfigureEntity;
 import com.leading.baselibrary.global.MainApplication;
@@ -25,6 +24,7 @@ import com.leading.baselibrary.ui.BackgourdSwitch;
 import com.leading.baselibrary.ui.DialogAlertUtil;
 import com.leading.baselibrary.ui.Loading;
 import com.leading.baselibrary.util.ConfigureUtil;
+import com.leading.baselibrary.util.StringUtils;
 import com.leading.mobileplat.entity.UserBo;
 import com.leading.mobileplat.mutual.ServiceHelper;
 import com.leading.xmpp_client.server.ServiceManager;
@@ -56,16 +56,8 @@ public class ActivityLogin extends Activity {
 	// 配置文件工具处理对象.
 	private ConfigureUtil config;
 	// 初始化Loading加载图标
-	private Loading loading = Loading.getLoading(ActivityLogin.this,
-			R.id.activity_login);
-
-	// 子线程Handler负责处理与服务器交互的登录功能
-	private ChildHandler childHandler = null;
-
-	/**
-	 * 主线程Handler负责与ChildHanlder子线程交互由子线程通知进行调用 接受子线程的消息进行相应处理.
-	 */
-	private Handler mainHandler = null;
+	private Loading loading = Loading.getLoading(ActivityLogin.this,R.id.activity_login);
+	private ProgressBar pbBig;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,29 +66,10 @@ public class ActivityLogin extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
 		btnLogin = (Button) findViewById(R.id.login_btn);
+		pbBig=(ProgressBar)findViewById(R.id.pgBarLoginLoding);
 		// 设置图片按钮按下时的效果
 		BackgourdSwitch.setButtonFocusChanged(btnLogin);
 		initialize();// 初始化控件
-		mainHandler = new Handler() {
-			public void handleMessage(Message msg) {
-				UserBo user = (UserBo) msg.obj;
-				loading.closeLoading();
-				btnLogin.setEnabled(true);
-				if (user != null && "null".equals(user.getError())) {
-					DialogAlertUtil.showToast(ActivityLogin.this,
-							"用户名或者密码有误,请重新登录！");
-				} else if (user != null) {
-					// 把配置对象保存到全局Application里方便程序随时读取
-					MainApplication.setConfig(configEntity);
-					Intent it = new Intent(ActivityLogin.this,ActivityProgram.class);
-					startActivityForResult(it, 0);
-					settingConfig(true, user.getUserName(), user.getUserId());
-					startXMPP(user);
-					ActivityLogin.this.finish();
-				}
-				super.handleMessage(msg);
-			}
-		};
 		btnLogin.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -123,11 +96,7 @@ public class ActivityLogin extends Activity {
 
 	private void loginBegin() {
 		loading.openLoading();
-		HandlerThread childThread = new HandlerThread("child_thread");
-		childThread.start();
-		childHandler = new ChildHandler(childThread.getLooper());
-		Message message = childHandler.obtainMessage();
-		message.sendToTarget();
+		LoginThread.start();
 	}
 
 	/**
@@ -153,28 +122,38 @@ public class ActivityLogin extends Activity {
 		chkRemenberPwd.setChecked(configEntity.getMemoryPassword());
 		editServerAddress.setText(configEntity.getServerAddress());
 		// 如果有缓存 尝试自动登录 (需要延时执行)
-		if (configEntity.getAutoLogin()
-				&& configEntity.getServerAddress() != "") {
-			// loginBegin();
+		if (configEntity.getAutoLogin()&& StringUtils.isNotNull(configEntity.getServerAddress())
+				&&StringUtils.isNotNull(configEntity.getUsername())) {
+			pbBig.setVisibility(View.VISIBLE);
+			LoginThread.start();
 		}
 		editServerAddress.setText("119.255.48.198:81");
 	}
 
-	/**
-	 * 子线程处理与服务器通信进行登录.
-	 * 
-	 * @author Jiantao.tu
-	 * 
-	 */
-	class ChildHandler extends Handler {
-		public ChildHandler() {
-		}
-
-		public ChildHandler(Looper looper) {
-			super(looper);
-		}
-
+	// 子线程Handler负责处理与服务器交互的登录功能
+	private Handler  mainHandler = new Handler() {
 		public void handleMessage(Message msg) {
+			UserBo user = (UserBo) msg.obj;
+			loading.closeLoading();
+			btnLogin.setEnabled(true);
+			if (user != null && "null".equals(user.getError())) {
+				DialogAlertUtil.showToast(ActivityLogin.this,
+						"用户名或者密码有误,请重新登录！");
+			} else if (user != null) {
+				// 把配置对象保存到全局Application里方便程序随时读取
+				MainApplication.setConfig(configEntity);
+				Intent it = new Intent(ActivityLogin.this,ActivityProgram.class);
+				startActivityForResult(it, 0);
+				settingConfig(true, user.getUserName(), user.getUserId());
+				startXMPP(user);
+				ActivityLogin.this.finish();
+				pbBig.setVisibility(View.GONE);
+			}
+			super.handleMessage(msg);
+		}
+	};
+	private Thread LoginThread=new Thread(){
+		public void run(){
 			ServiceHelper serviceHelper = new ServiceHelper(ActivityLogin.this);
 			UserBo user = serviceHelper.login(configEntity.getServerAddress(),
 					edtUsername.getText().toString(), edtPassword.getText()
@@ -182,9 +161,9 @@ public class ActivityLogin extends Activity {
 			Message message = mainHandler.obtainMessage();
 			message.obj = user;
 			message.sendToTarget();
+			stop();
 		}
-
-	}
+	};
 
 	/**
 	 * 释放子线程的Looper.
@@ -192,9 +171,6 @@ public class ActivityLogin extends Activity {
 	public void onDestroy() {
 		super.onDestroy();
 		MainApplication.removeActivity(activityId);
-		if (childHandler != null) {
-			childHandler.getLooper().quit();
-		}
 	}
 
 	/**
