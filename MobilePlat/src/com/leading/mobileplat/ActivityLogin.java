@@ -81,6 +81,7 @@ public class ActivityLogin extends Activity {
 					DialogAlertUtil.showToast(ActivityLogin.this, "服务器地址不能为空！");
 				} else {
 					settingConfig(false, null, null);
+					loading.openLoading();
 					loginBegin();
 				}
 				btnLogin.setEnabled(true);
@@ -95,7 +96,19 @@ public class ActivityLogin extends Activity {
 	}
 
 	private void loginBegin() {
-		loading.openLoading();
+		
+		LoginThread=new Thread(){
+			public void run(){
+				ServiceHelper serviceHelper = new ServiceHelper(ActivityLogin.this);
+				UserBo user = serviceHelper.login(configEntity.getServerAddress(),
+						edtUsername.getText().toString(), edtPassword.getText()
+								.toString());
+				Message message = mainHandler.obtainMessage();
+				message.obj = user;
+				mainHandler.sendMessage(message);
+			}
+		};
+		
 		LoginThread.start();
 	}
 
@@ -125,7 +138,7 @@ public class ActivityLogin extends Activity {
 		if (configEntity.getAutoLogin()&& StringUtils.isNotNull(configEntity.getServerAddress())
 				&&StringUtils.isNotNull(configEntity.getUsername())) {
 			pbBig.setVisibility(View.VISIBLE);
-			LoginThread.start();
+			loginBegin();
 		}
 		editServerAddress.setText("119.255.48.198:81");
 	}
@@ -147,23 +160,12 @@ public class ActivityLogin extends Activity {
 				settingConfig(true, user.getUserName(), user.getUserId());
 				startXMPP(user);
 				ActivityLogin.this.finish();
-				pbBig.setVisibility(View.GONE);
 			}
+			pbBig.setVisibility(View.GONE);
 			super.handleMessage(msg);
 		}
 	};
-	private Thread LoginThread=new Thread(){
-		public void run(){
-			ServiceHelper serviceHelper = new ServiceHelper(ActivityLogin.this);
-			UserBo user = serviceHelper.login(configEntity.getServerAddress(),
-					edtUsername.getText().toString(), edtPassword.getText()
-							.toString());
-			Message message = mainHandler.obtainMessage();
-			message.obj = user;
-			message.sendToTarget();
-			stop();
-		}
-	};
+	private Thread LoginThread;
 
 	/**
 	 * 释放子线程的Looper.
